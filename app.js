@@ -15,7 +15,6 @@ var create_database_connection=(username,password)=>{
 }
 
 var pool= create_database_connection("merio_db","Merio2020");
-
 class Mysql {
     constructor () {
 
