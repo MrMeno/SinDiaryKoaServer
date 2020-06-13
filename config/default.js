@@ -1,5 +1,5 @@
 const databaseConfig={
-    host:"rm-2zed76hhd8hls6x68ro.mysql.rds.aliyuncs.com",
+    host:"localhost",
     port:"3306",
     database:"merio_db"
     //username:merio_db 
