@@ -1,46 +1,44 @@
-const compose = require('koa-compose');
-const Koa = require('koa');
-const app = module.exports = new Koa();
-var mysql = require('mysql');
-var config = require('./config/default.js')
+const Koa = require('koa')
+const app = new Koa()
+const views = require('koa-views')
+const json = require('koa-json')
+const onerror = require('koa-onerror')
+const bodyparser = require('koa-bodyparser')
+const logger = require('koa-logger')
 
-var create_database_connection=(username,password)=>{
-    return mysql.createPool({
-        host     : config.databaseConfig.host,
-        port     : config.databaseConfig.port,
-        user     : username,
-        password : password,
-        database : config.databaseConfig.database
-      });
-}
+const index = require('./routes/index')
+const users = require('./routes/users')
 
-var pool= create_database_connection("merio_db","Merio2020");
-class Mysql {
-    constructor () {
+// error handler
+onerror(app)
 
-    }
-    query () {
-      return new Promise((resolve, reject) => {
-        pool.query('select * from wx_user_info', function (error, results, fields) {
-            if (error) {
-                throw error
-            };
-            resolve(results)
-        });
-      })
-       
-    }
-}
+// middlewares
+app.use(bodyparser({
+  enableTypes:['json', 'form', 'text']
+}))
+app.use(json())
+app.use(logger())
+app.use(require('koa-static')(__dirname + '/public'))
 
-var sql=new Mysql();
-app.use(async (ctx) => {
-    let data = await sql.query()
-    ctx.body = {
-        "code": 1,
-        "data": data,
-        "mesg": 'ok'
-    }
-    console.log(data)
+app.use(views(__dirname + '/views', {
+  extension: 'pug'
+}))
+
+// logger
+app.use(async (ctx, next) => {
+  const start = new Date()
+  await next()
+  const ms = new Date() - start
+  console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
 })
-app.listen(config.koaServerConfig.port)
-console.log(`listening on port ${config.koaServerConfig.port}`)
+
+// routes
+app.use(index.routes(), index.allowedMethods())
+app.use(users.routes(), users.allowedMethods())
+
+// error-handling
+app.on('error', (err, ctx) => {
+  console.error('server error', err, ctx)
+});
+
+module.exports = app
