@@ -1,0 +1,23 @@
+{
+  "name": "sindiarykoaserver",
+  "version": "1.0.0",
+  "description": "koa",
+  "main": "app.js",
+  "dependencies": {
+
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "text"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MrMeno/SinDiaryKoaServer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MrMeno/SinDiaryKoaServer/issues"
+  },
+  "homepage": "https://github.com/MrMeno/SinDiaryKoaServer#readme"
+}
