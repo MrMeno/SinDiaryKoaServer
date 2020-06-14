@@ -4,6 +4,7 @@ const views = require('koa-views')
 const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
+const koaBody =require('koa-body')
 const logger = require('koa-logger')
 
 const index = require('./routes/index')
@@ -17,6 +18,9 @@ app.use(bodyparser({
   enableTypes:['json', 'form', 'text']
 }))
 app.use(json())
+app.use(koaBody({
+  multipart: true, 
+}))
 app.use(logger())
 app.use(require('koa-static')(__dirname + '/public'))
 

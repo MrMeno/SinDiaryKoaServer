@@ -6,7 +6,7 @@ const MYSQL_CONFIG = require('../config/mysql_config') // 数据库配置
 const pool = mysql.createPool(MYSQL_CONFIG)
 
 // query sql语句入口
-const query = (sql, val) => {
+const sqlEntry = (sql, val) => {
     return new Promise((resolve, reject) => {
         pool.getConnection(function (err, connection) {
             if (err) {
@@ -24,5 +24,5 @@ const query = (sql, val) => {
 }
 
 module.exports = {
-    query
+    sqlEntry
 }
