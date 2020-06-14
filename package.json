@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "koa",
   "main": "app.js",
-  "dependencies": {
-
+  "dependencies": {},
+  "devDependencies": {
+    "koa": "^2.12.1",
+    "koa-compose": "^4.1.0",
+    "mysql": "^2.18.1"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "text"
   },
