@@ -4,7 +4,7 @@ const mysqlConfig= {
     user: "merio_db",
     password: "Merio2020",
     database: "merio_db",
-    host: "rm-2zed76hhd8hls6x68125010.mysql.rds.aliyuncs.com",
+    host:"localhost",//外网连接
     port: 3306
 }
 

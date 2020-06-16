@@ -63,7 +63,7 @@ const getQueryParamstr=obj=>{
         str+=`${key}='${obj[key]}',`;
     });
     str=str.substring(0, str.length - 1);
-    return `WHERE (${str})`;
+    return `WHERE ${str}`;
 };
 
 module.exports = {
