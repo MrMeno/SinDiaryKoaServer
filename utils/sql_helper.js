@@ -7,7 +7,7 @@
 //     password VARCHAR(255) NOT NULL
 //     PRIMARY KEY (user_phone)
 // );`.replace(/[\r\n]/g, '')
-
+const crypto = require('crypto');
 // 查询数据表
 const QUERY = (tableName,param,count) => {
      let str=getQueryParamstr(param);
@@ -65,6 +65,20 @@ const getQueryParamstr=obj=>{
     str=str.substring(0, str.length - 1);
     return `WHERE ${str}`;
 };
+/**
+ * @obj 参数对象
+ * @count @type bool 是否返回条数 
+
+*/
+const getRadomHex= (len)=>{
+     var id;
+     crypto.randomBytes(len, function(ex, buf) {
+        if (ex) throw ex;
+         id = buf.toString('hex');
+        console.log('randomcode: %s', id);
+    });
+    return id;
+};
 
 module.exports = {
     // CREATE_TABLE,
@@ -72,5 +86,6 @@ module.exports = {
     QUERY,
     INSERT,
     UPDATE,
-    DELETE
+    DELETE,
+    getRadomHex
 }

@@ -3,28 +3,55 @@ const { sqlEntry } = require('../utils/query');
 const crypto = require('crypto');
 var md5 = require('md5');
 const { toolClass } = require('../utils/tools');
-var WX_USER_INFO_TABLE=require('../map/wx_user_info.js');
-
+var zh_grab_detail_info=require('../map/zh_grab_detail_info.js');
+var sg_grab_info=require('../map/sg_grab_info.js');
 const {
   // CREATE_TABLE,
   INSERT,
   UPDATE,
   DELETE,
   QUERY,
-  getRandomId
-} = require('../utils/sql')
-
-// 初始化数据库，创建表
-//sqlEntry(CREATE_TABLE)
+  getRandomId,
+  getRadomHex
+} = require('../utils/sql_helper')
 
 router.get('/', async (ctx, next) => {
+  (async () => {
+    var admin = await zh_grab_detail_info.create({
+      content: '虎狗',
+      title: 'admin',
+      href: 'www.baidu.com',
+      author: 'admin',
+      publishTime:  toolClass.getCurrentTime(new Date(),'yyyy-MM-dd'),
+      updateTime:  toolClass.getCurrentTime(new Date(),'yyyy-MM-dd'),
+      zhNumber: getRandomId(),
+      nickName: '一只羊',
+      grabPoint: '知乎'
+    });
+    console.log('created: ' + JSON.stringify(admin));
+})();
   await ctx.render('index', {
     title: 'Hello Koa 2!'
   })
+
 });
 
-router.get('/string', async (ctx, next) => {
-  ctx.body = 'koa2 string'
+router.get('/prd_db_test', async (ctx, next) => {
+  console.log(getRadomHex(16));
+  (async () => {
+    var admin = await sg_grab_info.create({
+      id:0,
+      content: '虎狗',
+      title: 'admin',
+      href: 'www.baidu.com',
+      author: 'admin',
+      publishTime:  toolClass.getCurrentTime(new Date(),'yyyy-MM-dd hh:mm:ss.S'),
+      updateTime:  toolClass.getCurrentTime(new Date(),'yyyy-MM-dd hh:mm:ss.S'),
+      grabPoint: '搜狗'
+    });
+    console.log('created: ' + JSON.stringify(admin));
+})();
+  ctx.body = 'koa2 prd database test'
 });
 
 router.post('/login', async (ctx, next) => {
