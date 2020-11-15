@@ -1,20 +1,24 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
-        "target": "es2017",
+        "module": "system",
+        "target": "esnext",
         "noImplicitAny": true,
         "moduleResolution": "node",
-        "sourceMap": true,
+        "sourceMap": false,
         "outDir": "dist",  // TS文件编译后会放入到此文件夹内
         "baseUrl": ".",
-        "paths": {
-            "*": [
-                "node_modules/*",  //根据项目的路径指定
-                "src/types/*"      //根据项目的路径指定
-            ]
-        }
+        "allowJs":true,
+        "alwaysStrict":true,
+        "charset":"utf8",
+        "checkJs":true,
+        "experimentalDecorators":true,
+        "noEmitOnError":true
     },
     "include": [
-        "src/**/*"                //根据项目的路径指定
-    ]
+        "ts/**/*.ts"                //根据项目的路径指定
+    ],
+    "exclude": [
+        "node_modules",
+        "dist"
+      ]
 }

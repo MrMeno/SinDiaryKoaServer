@@ -23,7 +23,9 @@
   "devDependencies": {
     "@types/bluebird": "^3.5.33",
     "@types/koa": "^2.11.6",
+    "@types/koa-json": "^2.0.18",
     "@types/koa-router": "^7.4.1",
+    "@types/koa-views": "^2.0.4",
     "@types/validator": "^13.1.0",
     "crypto-js": "^4.0.0",
     "koa": "^2.13.0",
@@ -38,7 +40,8 @@
     "dev": "./node_modules/.bin/nodemon bin/www",
     "prd": "set NODE_ENV=prd&& pm2 start bin/www",
     "test": "set NODE_ENV=prd&& node bin/www",
-    "watch-server": "nodemon --watch app.ts -e ts,tsx --exec ts-node app.ts"
+    "build:ts": "tsc",
+    "watch:ts":""
   },
   "repository": {
     "type": "git",
