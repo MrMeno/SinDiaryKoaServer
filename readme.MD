@@ -1,16 +1,16 @@
 
 # 目录结构
 * bin
-    #www /*koa服务启动*/
-* config  /*配置信息*/
+    * * www  /*koa服务启动*/
+* config    /*配置信息*/
     ...
-* map     /*数据映射*/
+* map       /*数据映射*/
     ...
-* routes  /*koa接口集合*/
+* routes     /*koa接口集合*/
     ...
-* statics  /*静态文件*/
+* statics   /*静态文件*/
     ...
-* programs  /*业务层ts文件*/
+* programs      /*业务层ts文件*/
     * * interface
         ...
     * * Classed
