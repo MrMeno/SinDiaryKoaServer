@@ -9,5 +9,8 @@
    growUp(token:string):void{
           this.level ++
    }
+   goDie(token:string):void{
+       this.level=0
+   }
     
 }
