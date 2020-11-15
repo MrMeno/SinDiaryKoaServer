@@ -15,7 +15,7 @@
         "noEmitOnError":true
     },
     "include": [
-        "ts/**/*.ts"                //根据项目的路径指定
+        "programs/**/*.ts"                //根据项目的路径指定
     ],
     "exclude": [
         "node_modules",

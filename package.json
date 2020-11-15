@@ -31,17 +31,18 @@
     "koa": "^2.13.0",
     "nodemon": "^1.19.4",
     "reflect-metadata": "^0.1.9",
+    "rimraf": "^3.0.2",
     "sequelize": "^5.1.0",
     "ts-node": "^9.0.0",
     "typescript": "^3.9.5"
   },
   "scripts": {
-    "start": "set NODE_ENV=dev&& node bin/www",
-    "dev": "./node_modules/.bin/nodemon bin/www",
+    "start": "set NODE_ENV=dev&& node bin/www --hot --watch",
+    "dev": "set NODE_ENV=dev&& nodemon bin/www",
     "prd": "set NODE_ENV=prd&& pm2 start bin/www",
     "test": "set NODE_ENV=prd&& node bin/www",
-    "build:ts": "tsc",
-    "watch:ts":""
+    "build:ts": "rimraf dist&& tsc",
+    "watch:ts": "rimraf dist&& tsc --w"
   },
   "repository": {
     "type": "git",

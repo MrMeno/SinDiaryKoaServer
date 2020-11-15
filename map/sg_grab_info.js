@@ -52,5 +52,5 @@ var sg_grab_info= connection.define('sg_grab_info',
         freezeTableName: true,
         timestamps: false
     });
-    connection.models.sg_grab_info;
+   connection.models.sg_grab_info;
    module.exports= sg_grab_info;
