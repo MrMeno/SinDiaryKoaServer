@@ -1,16 +1,20 @@
-   import * as INodeTree from '../Interfaces/world_tree_interface'
-   abstract class worldTree{
-   abstract levelUp():void;
+    abstract class worldTree{
    abstract roleChange():void;
    private level:number =0;
-   constructor(){
-       return this
+   constructor(levelUp:Boolean,token:string){    
+    levelUp? this.levelUp(token):this.levelDown(token)
    }
-   growUp(token:string):void{
+   levelUp(token:string):void{
           this.level ++
+   }
+   levelDown(token:string):void{
+       this.level--
    }
    goDie(token:string):void{
        this.level=0
    }
     
+}
+export default {
+    worldTree
 }

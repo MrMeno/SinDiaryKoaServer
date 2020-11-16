@@ -4,6 +4,7 @@ var md5 = require('md5');
 const { toolClass } = require('../utils/tools');
 const {sqlMap} =require('../map/index');
 const { resolve } = require('bluebird');
+var worldTree =require('../dist/Classes/world_tree');
 router.get('/', async (ctx, next) => {
   (async () => {
     var admin = await sqlMap.zh_grab_detail_info.create({
@@ -18,6 +19,8 @@ router.get('/', async (ctx, next) => {
       grabPoint: '知乎'
     });
     console.log('created: ' + JSON.stringify(admin));
+    console.log('----------------------')
+    console.log(worldTree)
 })();
   await ctx.render('index', {
     title: 'Hello Koa 2!'
