@@ -1,5 +1,9 @@
 import {connection} from './db_connection';
 import {DataTypes, Model} from 'sequelize'
+class User extends Model {
+	
+}
+
 var userInfo__Table = connection.define('user_info', {
 	userName: {
 		field: 'user_name',

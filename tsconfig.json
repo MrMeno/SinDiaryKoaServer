@@ -5,7 +5,7 @@
         "noImplicitAny": true,
         "moduleResolution": "node",
         "sourceMap": false,
-        "outDir": "dist",  // TS文件编译后会放入到此文件夹内
+        "outDir": "dist/",  // TS文件编译后会放入到此文件夹内
         "baseUrl": ".",
         "allowJs":true,
         "alwaysStrict":true,
@@ -15,7 +15,8 @@
         "noEmitOnError":true
     },
     "include": [
-        "serveModel/**/*.ts"                //根据项目的路径指定
+        "./serveModel/**/*.ts",
+        "./utils/**/*.ts"                //根据项目的路径指定
     ],
     "exclude": [
         "node_modules",

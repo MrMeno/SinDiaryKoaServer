@@ -1,10 +1,15 @@
-const router = require('koa-router')()
+import * as Router from 'koa-router'
+import * as md5 from 'md5'
+import {toolClass} from '../utils/tool/index'
+import db from '../utils/map/index'
+import {resolve } from 'bluebird'
+import worldTree from '../serveModel/Classes/world_tree'
+import 'reflect-metadata'
 
-var md5 = require('md5');
-const { toolClass } = require('../utils/tool/index');
-const {sqlMap} =require('../utils/map/index');
-const { resolve } = require('bluebird');
-var worldTree =require('../dist/Classes/world_tree');
+
+var router=new Router();
+
+
 router.get('/', async (ctx, next) => {
   await ctx.render('index', {
     title: 'Hello Koa 2!'
@@ -20,3 +25,4 @@ router.post('/login', async (ctx, next) => {
   }
 });
 module.exports = router
+ 
