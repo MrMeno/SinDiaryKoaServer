@@ -1,10 +1,10 @@
-const { config } = require('../../config/mysql_config');
+import Config from '../../config/mysql_config'
 import { Sequelize} from 'sequelize'
-const isDevelopment = (process.env.NODE_ENV.trim())==='dev'
-const sql_config=isDevelopment?config.mysqlConfigDev:config.mysqlConfigPrd;
-console.log(sql_config)
+const isPrd:Boolean = (process.env.NODE_ENV.trim())==='prd'
+var sql_config=new Config(isPrd).config;
+console.log()
 const connection=new Sequelize(
-sql_config.database,
+sql_config.config.database,
 sql_config.user,
 sql_config.password,
 {

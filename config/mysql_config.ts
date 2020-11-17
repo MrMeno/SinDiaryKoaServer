@@ -1,6 +1,11 @@
-const mysql = require('mysql')
-class Config{
-     mysqlConfigDev= {
+import * as mysql from 'mysql2'
+import { ABSTRACT } from 'sequelize/types';
+ 
+export default class Config{
+    constructor(isPrd?:Boolean){
+        this.setConfig(isPrd)
+    }
+     mysqlConfigDev:any= {
         user: "root",
         password: "",
         database: "python_test_grap",
@@ -8,7 +13,7 @@ class Config{
         port: 3306,
         dialect:'mysql'
     }
-     mysqlConfigPrd= {
+     mysqlConfigPrd:any= {
         user: "merio_db",
         password: "Merio_20",
         database: "dev",
@@ -16,8 +21,9 @@ class Config{
         port: 3306,
         dialect:'mysql'
     }
+   public config:any;
+   private setConfig=(isPrd?:Boolean):void=>{
+        this.config=isPrd?this.mysqlConfigPrd:this.mysqlConfigDev
+    }
 }
-var config=new Config();
-module.exports = {
-    config
-}
+ 

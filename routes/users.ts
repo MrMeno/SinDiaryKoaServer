@@ -8,9 +8,9 @@ import { get, post } from '../utils/define/network';
 
 var router=new Router();
 
-export default class indexRouter {
-  @get('/login', true)
-  async login(ctx:Context){
+export default class UserRouter {
+  @get('/user', true)
+  async user(ctx:Context){
     await ctx.render('index',{
       title:'Hello Koa 2!'
     })
