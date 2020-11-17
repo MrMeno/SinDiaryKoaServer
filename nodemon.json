@@ -12,8 +12,5 @@
     "watch": [
     
     ],
-    "env": {
-    "NODE_ENV": "dev"
-    },
     "ext": "pug js json"
     }

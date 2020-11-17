@@ -1,4 +1,4 @@
-    abstract class worldTree{
+   abstract class worldTree{
    abstract roleChange():void;
    private level:number =0;
    constructor(levelUp:Boolean,token:string){    

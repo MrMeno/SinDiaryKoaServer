@@ -1,5 +1,4 @@
 const mysql = require('mysql')
-
 class Config{
      mysqlConfigDev= {
         user: "root",

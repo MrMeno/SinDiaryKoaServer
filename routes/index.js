@@ -29,19 +29,19 @@ router.get('/', async (ctx, next) => {
 });
 
 router.get('/prd_db_test', async (ctx, next) => {
-//   (async () => {
-//     var admin = await sg_grab_info.create({
-//       id:0,
-//       content: '虎狗',
-//       title: 'admin',
-//       href: 'www.baidu.com',
-//       author: 'admin',
-//       publishTime:  toolClass.getCurrentTime(new Date(),'yyyy-MM-dd hh:mm:ss.S'),
-//       updateTime:  toolClass.getCurrentTime(new Date(),'yyyy-MM-dd hh:mm:ss.S'),
-//       grabPoint: '搜狗'
-//     });
-//     console.log('created: ' + JSON.stringify(admin));
-// })();
+  (async () => {
+    var sqlReq = await sqlMap.sg_grab_info.create({
+      id:0,
+      content: '虎狗',
+      title: 'admin',
+      href: 'www.baidu.com',
+      author: 'admin',
+      publishTime:  toolClass.getCurrentTime(new Date(),'yyyy-MM-dd hh:mm:ss.S'),
+      updateTime:  toolClass.getCurrentTime(new Date(),'yyyy-MM-dd hh:mm:ss.S'),
+      grabPoint: '搜狗'
+    });
+    console.log('created: ' + JSON.stringify(sqlReq));
+})();
   ctx.body = 'koa2 prd database test'
 });
 

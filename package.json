@@ -18,7 +18,8 @@
     "md5": "^2.2.1",
     "mysql": "^2.16.0",
     "mysql2": "^2.1.0",
-    "pug": "^2.0.0-rc.1"
+    "pug": "^2.0.0-rc.1",
+    "system": "^2.0.1"
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.33",
@@ -27,6 +28,7 @@
     "@types/koa-router": "^7.4.1",
     "@types/koa-views": "^2.0.4",
     "@types/validator": "^13.1.0",
+    "cross-env": "^7.0.2",
     "crypto-js": "^4.0.0",
     "koa": "^2.13.0",
     "nodemon": "^1.19.4",
@@ -37,10 +39,10 @@
     "typescript": "^3.9.5"
   },
   "scripts": {
-    "start": "set NODE_ENV=dev&& node bin/www --hot --watch",
-    "dev": "set NODE_ENV=dev&& nodemon bin/www",
-    "prd": "set NODE_ENV=prd&& pm2 start bin/www",
-    "test": "set NODE_ENV=prd&& node bin/www",
+    "start": "cross-env  NODE_ENV=prd node ./bin/www.js",
+    "dev": "cross-env NODE_ENV=prd nodemon ./bin/www.js",
+    "prd": "cross-env NODE_ENV=prd pm2 start ./bin/www.js",
+    "test": "cross-env  NODE_ENV=prd node bin/www.js",
     "build:ts": "rimraf dist&& tsc",
     "watch:ts": "rimraf dist&& tsc --w"
   },
