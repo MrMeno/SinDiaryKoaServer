@@ -35,12 +35,12 @@
 
 # 项目启动
  ### 1.npm run build:ts  
-	> *构建业务层代码*
+	> * 构建业务层代码 *
  ### 2.npm run watch:ts  
-	> *业务层代码热更新*
+	> * 业务层代码热更新 *
  ### 3.npm run dev:server 或者 npm run prd:server  
-	> *服务端：开发or生产服务启动*
+	> * 服务端：开发or生产服务启动 *
  ### 4.npm run dev:client 或者 npm run prd:client  
-	> *客户端：开发or生产服务启动*
+	> * 客户端：开发or生产服务启动 *
 
 
