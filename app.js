@@ -23,7 +23,7 @@ app.use(koaBody({
 app.use(logger())
 app.use(require('koa-static')(__dirname + '/statics'))
 
-app.use(views(__dirname + '/views', {
+app.use(views(__dirname + '/engine', {
   extension: 'pug'
 }))
 

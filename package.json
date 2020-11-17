@@ -39,10 +39,12 @@
     "typescript": "^3.9.5"
   },
   "scripts": {
-    "start": "cross-env  NODE_ENV=prd node ./bin/www.js",
-    "dev": "cross-env NODE_ENV=prd nodemon ./bin/www.js",
-    "prd": "cross-env NODE_ENV=prd pm2 start ./bin/www.js",
-    "test": "cross-env  NODE_ENV=prd node bin/www.js",
+	"dev:client":"",
+	"build:client":"",
+    "start:server": "cross-env  NODE_ENV=prd node ./bin/www.js",
+    "dev:server": "cross-env NODE_ENV=prd nodemon ./bin/www.js",
+    "prd:server": "cross-env NODE_ENV=prd pm2 start ./bin/www.js",
+    "test:server": "cross-env  NODE_ENV=prd node bin/www.js",
     "build:ts": "rimraf dist&& tsc",
     "watch:ts": "rimraf dist&& tsc --w"
   },

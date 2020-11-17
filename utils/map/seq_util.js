@@ -1,4 +1,4 @@
-const { config } = require('../config/mysql_config');
+const { config } = require('../../config/mysql_config');
 require('process');
 var Sequelize=require('Sequelize');
 const isDevelopment = (process.env.NODE_ENV.trim())==='dev'

@@ -1,8 +1,8 @@
 const router = require('koa-router')()
 
 var md5 = require('md5');
-const { toolClass } = require('../utils/tools');
-const {sqlMap} =require('../map/index');
+const { toolClass } = require('../utils/tool/index');
+const {sqlMap} =require('../utils/map/index');
 const { resolve } = require('bluebird');
 var worldTree =require('../dist/Classes/world_tree');
 router.get('/', async (ctx, next) => {
