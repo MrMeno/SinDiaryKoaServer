@@ -1,6 +1,6 @@
-import * as mysql from 'mysql2'
-import { ABSTRACT } from 'sequelize/types';
- 
+// import * as mysql from 'mysql2'
+// import { ABSTRACT } from 'sequelize/types';
+import * as path from 'path'
 export default class Config{
     constructor(isPrd?:Boolean){
         this.setConfig(isPrd)
@@ -22,6 +22,7 @@ export default class Config{
         dialect:'mysql'
     }
    public config:any;
+   public static rootPth:string=path.resolve(__dirname,'../');
    private setConfig=(isPrd?:Boolean):void=>{
         this.config=isPrd?this.mysqlConfigPrd:this.mysqlConfigDev
     }

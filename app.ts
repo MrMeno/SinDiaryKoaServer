@@ -4,10 +4,11 @@ import views from 'koa-views';
 import json from 'koa-json';
 const onError = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
+const KoaStatic = require('koa-static');
 import koaBody from 'koa-body';
 import KoaLogger from 'koa-logger';
-import addRouter from './utils/define/router'
-
+import addRouter from './utils/define/routeHook'
+const errorHandler = require('./utils/middleware/error');
 const app=new Koa();
 const router=new koaRouter();
 addRouter(router);
@@ -20,7 +21,7 @@ app.use(koaBody({
   multipart: true, 
 }))
 app.use(KoaLogger())
-app.use(require('koa-static')(__dirname + '/statics'))
+app.use(KoaStatic(__dirname+ '../statics'))
 app.use(views(__dirname + '/engine', {
   extension: 'pug'
 }))
@@ -31,7 +32,7 @@ app.use(async(ctx:Context, next:any) => {
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
 })
 app.use(router.routes()).use(router.allowedMethods());
-
+errorHandler(app)
 app.on('error', (err:any, ctx:any) => {
   console.error('server error', err, ctx)
 });

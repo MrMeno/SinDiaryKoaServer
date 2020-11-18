@@ -4,9 +4,10 @@ import * as path from 'path'
 import { ROUTER_MAP } from './constant'
 import { RouteMeta } from './type'
 import koaRouter from 'koa-router'
-
+import Config from '../../config/config' 
 const addRouter = (router: koaRouter) => {
-  const ctrPath = path.join(__dirname, 'controller');
+  console.log(Config.rootPth)
+  const ctrPath = path.join(Config.rootPth, 'routes');
   const modules: ObjectConstructor[] = [];
   // 扫描controller文件夹，收集所有controller
   fs.readdirSync(ctrPath).forEach(name => {

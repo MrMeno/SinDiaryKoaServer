@@ -1,4 +1,4 @@
-import Config from '../../config/mysql_config'
+import Config from '../../config/config'
 import { Sequelize} from 'sequelize'
 const isPrd:Boolean = (process.env.NODE_ENV.trim())==='prd'
 var sql_config=new Config(isPrd).config;
