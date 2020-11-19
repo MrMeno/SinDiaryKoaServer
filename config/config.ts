@@ -1,6 +1,6 @@
 // import * as mysql from 'mysql2'
 // import { ABSTRACT } from 'sequelize/types';
-import * as path from 'path'
+import path from 'path'
 export default class Config{
     constructor(isPrd?:Boolean){
         this.setConfig(isPrd)

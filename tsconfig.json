@@ -24,11 +24,12 @@
       }
     },
     "include": [
-      "/",
       "*.ts",
       "utils/**/*.ts",
-      "toutes/**/*.ts",
-      "serveModel/**/*.ts"
+      "routes/**/*.ts",
+      "serveModel/**/*.ts",
+      "programs/**/*.ts",
+      "bin/*.ts"
     ],
     "exclude": [
       "node_modules",
