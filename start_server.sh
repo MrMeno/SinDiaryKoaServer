@@ -4,7 +4,7 @@ KOA_HOME=/home/SinDiaryKoaServer
 SERVER_HOME=/usr/src
 export KOA_HOME
 echo "开始编译typescript文件"
-file_remove=`rm -rf /serveModel/`
+file_remove=`rm -rf ./serveModel`
 sleep 2
 TSC_COMPILE=`tsc`
 sleep 1
