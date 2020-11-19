@@ -8,6 +8,7 @@ const KoaStatic = require('koa-static');
 import koaBody from 'koa-body';
 import KoaLogger from 'koa-logger';
 import addRouter from './utils/define/routeHook'
+import path from 'path'
 const errorHandler = require('./utils/middleware/error');
 const app=new Koa();
 const router=new koaRouter();
@@ -21,7 +22,7 @@ app.use(koaBody({
   multipart: true, 
 }))
 app.use(KoaLogger())
-app.use(KoaStatic(__dirname+ '../statics'))
+app.use(KoaStatic(path.join(__dirname, 'statics')))
 app.use(views(__dirname + '/engine', {
   extension: 'pug'
 }))

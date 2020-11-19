@@ -33,10 +33,11 @@ module.exports = (app:any) => {
             if(!ctx.body){  // 没有资源
                 // ctx.body = "not found"
                 ctx.render('error',{
-                    message:'page not find',
+                    content:'hasaki',
                     error:{
                         status:ctx.status,
-                        stack:'page not find'
+                        stack:'page not find',
+                        message:'page not find'
                     }
                   })
             }
