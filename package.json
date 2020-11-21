@@ -25,11 +25,11 @@
     "@types/bluebird": "^3.5.33",
     "@types/koa": "^2.11.6",
     "@types/koa-json": "^2.0.18",
+    "@types/koa-logger": "^2.0.1",
     "@types/koa-router": "^7.4.1",
     "@types/koa-views": "^2.0.4",
-    "@types/validator": "^13.1.0",
-    "@types/koa-logger": "^2.0.1",
     "@types/md5": "^2.2.1",
+    "@types/validator": "^13.1.0",
     "cross-env": "^7.0.2",
     "crypto-js": "^4.0.0",
     "koa": "^2.13.0",
@@ -37,6 +37,7 @@
     "reflect-metadata": "^0.1.9",
     "rimraf": "^3.0.2",
     "sequelize": "^5.1.0",
+    "sequelize-typescript": "^1.1.0",
     "ts-node": "^9.0.0",
     "typescript": "^3.9.5"
   },
@@ -60,5 +61,5 @@
     "url": "https://github.com/MrMeno/SinDiaryKoaServer/issues"
   },
   "homepage": "https://github.com/MrMeno/SinDiaryKoaServer#readme",
-  "node":"V12.16.0"
+  "node": "V12.16.0"
 }

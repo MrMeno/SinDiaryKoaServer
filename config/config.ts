@@ -1,11 +1,20 @@
-// import * as mysql from 'mysql2'
-// import { ABSTRACT } from 'sequelize/types';
+
+import type { Dialect} from 'sequelize'
 import path from 'path'
+
+interface dbInfo{
+    user:string
+    password: string
+    database: string
+    host:string
+    port: number
+    dialect:Dialect
+}
 export default class Config{
     constructor(isPrd?:Boolean){
         this.setConfig(isPrd)
     }
-     mysqlConfigDev:any= {
+    private mysqlConfigDev:dbInfo= {
         user: "root",
         password: "",
         database: "python_test_grap",
@@ -13,7 +22,7 @@ export default class Config{
         port: 3306,
         dialect:'mysql'
     }
-     mysqlConfigPrd:any= {
+    private mysqlConfigPrd:dbInfo= {
         user: "merio_db",
         password: "Merio_20",
         database: "dev",
@@ -21,7 +30,7 @@ export default class Config{
         port: 3306,
         dialect:'mysql'
     }
-   public config:any;
+   public config:dbInfo;
    public static rootPth:string=path.resolve(__dirname,'../');
    private setConfig=(isPrd?:Boolean):void=>{
         this.config=isPrd?this.mysqlConfigPrd:this.mysqlConfigDev
