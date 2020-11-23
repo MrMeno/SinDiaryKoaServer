@@ -1,4 +1,4 @@
-module.exports = (app:any) => {
+const errorHandler = (app:any) => {
     app.use(async (ctx:any, next:any) => {
         let status = 0;
         let fileName = "";
@@ -46,4 +46,7 @@ module.exports = (app:any) => {
         }
     })
     );
+}
+export {
+    errorHandler
 }

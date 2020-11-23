@@ -8,15 +8,19 @@ const KoaStatic = require('koa-static');
 import koaBody from 'koa-body';
 import KoaLogger from 'koa-logger';
 import addRouter from './utils/define/routeHook'
+import {jsonHandler} from './utils/middleware/json'
+import {errorHandler} from './utils/middleware/error'
 import path from 'path'
-const errorHandler = require('./utils/middleware/error');
 const app=new Koa();
 const router=new koaRouter();
 addRouter(router);
+errorHandler(app)
 onError(app)
 app.use(bodyparser({
   enableTypes:['json', 'form', 'text']
 }))
+jsonHandler(app)
+ 
 app.use(json())
 app.use(koaBody({
   multipart: true, 
@@ -33,7 +37,7 @@ app.use(async(ctx:Context, next:any) => {
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
 })
 app.use(router.routes()).use(router.allowedMethods());
-errorHandler(app)
+
 app.on('error', (err:any, ctx:any) => {
   console.error('server error', err, ctx)
 });
