@@ -1,16 +1,16 @@
 import { Context ,Next} from 'koa';
-import { get ,post, put ,del} from '../utils/define/network';
+import { GET ,POST, PUT ,DELETE} from '../utils/define/network';
 import { connection } from '../utils/map/db_connection';
 import toolClass from '../utils/tool/index';
 export default class indexRouter {
 
-  @get('/login', true)
+  @GET('/login', true)
   async login(ctx:Context){
     await ctx.render('index',{
       title:'Hello Koa 2!'
     })
   }
-  @get('/role',true)
+  @GET('/role',true)
   async role(ctx:Context,next:Next){
     await connection.models.sys_RoleBasic.findAll().then(role=>{
          ctx.success({roleList:role})
@@ -21,7 +21,7 @@ export default class indexRouter {
     })
      
   }
-  @post('/addRole',true)
+  @POST('/addRole',true)
   async addRole(ctx:Context,next:Next){
     let param=ctx.request.body;
     param=Object.assign({id:toolClass.getRadomHex(16)},param);
@@ -34,10 +34,11 @@ export default class indexRouter {
     })
   }
 
-  @put('/editRole',true)
+  @PUT('/editRole',true)
   async editRole(ctx:Context){
      let id=ctx.request.body.id;
     const param=ctx.request.body;
+
     console.log(JSON.stringify(param))
     try{
     delete param.id;
@@ -59,13 +60,14 @@ export default class indexRouter {
       ctx.fail(e);
     }
   }
-  @del('/delRole',true)
-  async delRole(ctx:Context){
-    let desc=ctx.request.body.desc;
+  @DELETE('/delRole',true)
+  async delRole(ctx:Context,next:Next){
+    let id=ctx.request.body.id;
     try{
-    await connection.models.sys_RoleBasic.destroy({where:{desc:`${desc}`}})
+    await connection.models.sys_RoleBasic.destroy({where:{id:`${id}`}})
     .then((count)=>{
-      ctx.success({count:count},`删除成功`);
+      console.log(count)
+      ctx.success(`删除成功`);
     })
     .catch(error=>{
       ctx.fail(error)
@@ -73,6 +75,7 @@ export default class indexRouter {
     }
     catch (e){
       ctx.fail(e);
+      next()
     }
   }
 

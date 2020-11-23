@@ -1,6 +1,5 @@
 import 'reflect-metadata'
 import { ROUTER_MAP } from './constant'
-
 /**
  * @desc 生成 http method 装饰器
  * @param {string} method - http method，如 get、post、head
@@ -18,11 +17,11 @@ function createMethodDecorator(method: string) {
   };
 }
 // 导出 http method 装饰器
-export const post = createMethodDecorator('post');
-export const get = createMethodDecorator('get');
-export const del = createMethodDecorator('del');
-export const put = createMethodDecorator('put');
-export const patch = createMethodDecorator('patch');
-export const options = createMethodDecorator('options');
-export const head = createMethodDecorator('head');
-export const all = createMethodDecorator('all');
+export const POST = createMethodDecorator('post');
+export const GET = createMethodDecorator('get');
+export const DELETE = createMethodDecorator('delete');
+export const PUT = createMethodDecorator('put');
+export const PATCH = createMethodDecorator('patch');
+export const OPTIONS = createMethodDecorator('options');
+export const HEAD = createMethodDecorator('head');
+export const ALL = createMethodDecorator('all');
