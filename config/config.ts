@@ -24,9 +24,9 @@ export default class Config{
     }
     private mysqlConfigPrd:dbInfo= {
         user: "merio_db",
-        password: "xxxxxx",
+        password: "Merio_20",
         database: "dev",
-        host:"localhost",//外网连接
+        host:"rm-2zed76hhd8hls6x68125010.mysql.rds.aliyuncs.com",//外网连接
         port: 3306,
         dialect:'mysql'
     }
