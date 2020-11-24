@@ -1,13 +1,11 @@
 import * as crypto from 'crypto'
 export default class toolClass {
-    // 对Date的扩展，将 Date 转化为指定格式的String
-    // 月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符，
-    // 年(y)可以用 1-4 个占位符，毫秒(S)只能用 1 个占位符(是 1-3 位的数字)
-    // 例子：
-    // (new Date()).Format("yyyy-MM-dd hh:mm:ss.S") ==> 2006-07-02 08:09:04.423
-    // (new Date()).Format("yyyy-M-d h:m:s.S") ==> 2006-7-2 8:9:4.18
-
- public static getCurrentTime = (dateTime:Date, fmt:string) => {
+     /**
+     * @dateTime 时间类型
+     * @fmt 格式化的类型 yyyy-MM-dd hh:mm:ss.S 
+     * @return 时间字符串
+    */
+ public static getCurrentTime = (dateTime:Date=new Date(), fmt:string) => {
         var o = {
             "M+": dateTime.getMonth() + 1, // 月份
             "d+": dateTime.getDate(), // 日
@@ -24,9 +22,34 @@ export default class toolClass {
         return fmt;
 
     }
+    /**
+     * @len 随机字符串长度
+     * @return 随机字符串
+    */
     public static getRadomHex = (len:number) => {
         let bufferStr= crypto.randomBytes(len);
         return bufferStr.toString('hex');
+    }
+    /** 
+     * @min 最小值
+     * @max 最大值
+     * @return 随机数
+     */
+    public static getRandom(min:number, max:number) {
+        return Math.floor(Math.random() * (min - max) + max) + Number(Math.random().toFixed(4));
+    }
+    /** 
+     * *洗牌算法
+     * @arr 输入的数组
+     * @return 输出重新排序的数组
+     */
+    public static yateFisher(arr:Array<string>) {
+        let i = arr.length;
+        while (i) {
+            let j = Math.floor(Math.random() * i--); //5555
+            [arr[j], arr[i]] = [arr[i], arr[j]];
+        }
+        return arr;
     }
 };
  

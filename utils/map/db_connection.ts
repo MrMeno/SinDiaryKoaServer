@@ -1,8 +1,6 @@
 import Config from '../../config/config'
 import { Sequelize } from 'sequelize-typescript'
 import {sys_RoleBasic} from './sys_role_basic_table'
-
-
 const isPrd:Boolean = (process.env.NODE_ENV.trim())==='prd'
 var db_config=new Config(isPrd).config;
 console.log(db_config)

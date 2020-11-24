@@ -45,7 +45,7 @@
     "dev:client": "",
     "build:client": "",
     "start:server": "cross-env NODE_ENV=prd nodemon ./bin/www.ts",
-    "dev:server": "cross-env NODE_ENV=prd nodemon ./bin/www.ts --watch",
+    "dev:server": "cross-env NODE_ENV=dev nodemon ./bin/www.ts --watch",
     "prd:server": "cross-env NODE_ENV=prd pm2 start ./bin/www.js",
     "test:server": "cross-env  NODE_ENV=prd nodemon bin/www.ts",
     "build:ts": "rimraf dist&& tsc",

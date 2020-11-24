@@ -17,16 +17,16 @@ export default class Config{
     private mysqlConfigDev:dbInfo= {
         user: "root",
         password: "",
-        database: "python_test_grap",
+        database: "dev",
         host:"localhost",//外网连接
         port: 3306,
         dialect:'mysql'
     }
     private mysqlConfigPrd:dbInfo= {
         user: "merio_db",
-        password: "Merio_20",
+        password: "xxxxxx",
         database: "dev",
-        host:"rm-2zed76hhd8hls6x68ro.mysql.rds.aliyuncs.com",//外网连接
+        host:"localhost",//外网连接
         port: 3306,
         dialect:'mysql'
     }
