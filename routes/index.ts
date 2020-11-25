@@ -24,6 +24,7 @@ export default class indexRouter {
   @POST('/addRole',true)
   async addRole(ctx:Context,next:Next){
     let param=ctx.request.body;
+    console.log(JSON.stringify(param))
     param=Object.assign({id:toolClass.getRadomHex(16)},param);
     await connection.models.sys_RoleBasic.create(param).then(res=>{
       ctx.success(res);
