@@ -33,6 +33,7 @@
     "cross-env": "^7.0.2",
     "crypto-js": "^4.0.0",
     "koa": "^2.13.0",
+    "koa2-cors": "^2.0.6",
     "nodemon": "^1.19.4",
     "reflect-metadata": "^0.1.9",
     "rimraf": "^3.0.2",
