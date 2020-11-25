@@ -26,7 +26,7 @@ export default class Config{
         user: "merio_db",
         password: "Merio_20",
         database: "dev",
-        host:"rm-2zed76hhd8hls6x68ro.mysql.rds.aliyuncs.com",//外网连接
+        host:"rm-2zed76hhd8hls6x68125010.mysql.rds.aliyuncs.com",//外网连接
         port: 3306,
         dialect:'mysql'
     }
