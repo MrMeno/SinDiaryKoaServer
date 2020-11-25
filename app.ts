@@ -15,7 +15,7 @@ import {errorHandler} from './utils/middleware/error'
 import path from 'path'
 const app=new Koa();
 const router=new koaRouter();
-addRouter(router);
+addRouter(router)
 errorHandler(app)
 onError(app)
 app.use(bodyparser({
@@ -39,7 +39,9 @@ app.use(KoaStatic(path.join(__dirname, 'statics')))
 app.use(views(__dirname + '/engine', {
   extension: 'pug'
 }))
- 
+app.use(router.routes())
+app.use(router.allowedMethods())
+
 app.use(async(ctx:Context, next:any) => {
   const start = new Date()
   await next()
