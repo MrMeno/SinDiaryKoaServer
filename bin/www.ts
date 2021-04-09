@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-import app from '../app'
+import {app} from '../app'
 var debug = require('debug')('demo:server');
 import http from 'http'
 

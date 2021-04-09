@@ -1,5 +1,5 @@
 import { Context ,Next} from 'koa';
-import { GET ,POST, PUT ,DELETE} from '../utils/define/network';
+import { GET ,POST, PUT ,DELETE} from '../serveModel/Interfaces/network';
 import { connection } from '../utils/map/db_connection';
 import toolClass from '../utils/tool/index';
 export default class indexRouter {

@@ -4,11 +4,15 @@
   "description": "koa",
   "main": "app.js",
   "dependencies": {
-    "crypto": "^1.0.1",
     "debug": "^2.6.3",
+    "gulp": "^4.0.2",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "gulp-uglify": "^3.0.2",
     "koa-body": "^4.2.0",
     "koa-bodyparser": "^3.2.0",
     "koa-convert": "^1.2.0",
+    "koa-http-request": "^2.2.1",
     "koa-json": "^2.0.2",
     "koa-logger": "^2.0.1",
     "koa-onerror": "^1.2.1",
@@ -18,6 +22,8 @@
     "mysql": "^2.16.0",
     "mysql2": "^2.1.0",
     "pug": "^2.0.0-rc.1",
+    "qr-image": "^3.2.0",
+    "querystring": "^0.2.0",
     "system": "^2.0.1",
     "tslib": "^2.0.3"
   },
@@ -29,12 +35,19 @@
     "@types/koa-router": "^7.4.1",
     "@types/koa-views": "^2.0.4",
     "@types/md5": "^2.2.1",
+    "@types/redis": "^2.8.28",
     "@types/validator": "^13.1.0",
     "cross-env": "^7.0.2",
+    "crypto": "^1.0.1",
     "crypto-js": "^4.0.0",
     "koa": "^2.13.0",
+    "koa-generic-session": "^2.1.1",
+    "koa-redis": "^4.0.1",
     "koa2-cors": "^2.0.6",
+    "node-rsa": "^1.1.1",
+    "node-schedule": "^2.0.0",
     "nodemon": "^1.19.4",
+    "redis": "^3.0.2",
     "reflect-metadata": "^0.1.9",
     "rimraf": "^3.0.2",
     "sequelize": "^5.1.0",
@@ -43,24 +56,15 @@
     "typescript": "^3.9.5"
   },
   "scripts": {
-    "dev:client": "",
-    "build:client": "",
-    "start:server": "cross-env NODE_ENV=prd nodemon ./bin/www.ts --watch",
-    "dev:server": "cross-env NODE_ENV=dev nodemon ./bin/www.ts --watch",
-    "prd:server": "cross-env NODE_ENV=prd pm2 start ./bin/www.js",
-    "test:server": "cross-env  NODE_ENV=prd nodemon bin/www.ts",
-    "build:ts": "rimraf dist&& tsc",
-    "watch:ts": "rimraf dist&& tsc --w"
+    "debug": "cross-env NODE_ENV=local nodemon ./bin/www.ts --watch",
+    "dev:server": "cross-env NODE_ENV=local nodemon ./bin/www.js --watch",
+    "prd:server": "cross-env NODE_ENV=prd pm2 start./bin/www.js--node-args '--max_old_space_size=100'",
+    "build:prd": "cross-env NODE_ENV=prd&& rimraf dist&& tsc",
+    "build:local": "cross-env NODE_ENV=local&& rimraf dist&& tsc",
+    "build:dev": "cross-env NODE_ENV=dev&& tsc",
+    "watch:ts": "rimraf dist&& tsc--w"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MrMeno/SinDiaryKoaServer.git"
-  },
-  "author": "MrM",
+  "author": "ymin",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/MrMeno/SinDiaryKoaServer/issues"
-  },
-  "homepage": "https://github.com/MrMeno/SinDiaryKoaServer#readme",
-  "node": "V12.16.0"
+  "node": "V10.16.0"
 }
