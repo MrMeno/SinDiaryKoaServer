@@ -1,3 +1,5 @@
+import {static_server_url } from '../../config/config.base';
+
 const errorHandler = (app:any) => {
     app.use(async (ctx:any, next:any) => {
         let status = 0;
@@ -37,7 +39,8 @@ const errorHandler = (app:any) => {
                     error:{
                         status:ctx.status,
                         stack:'page not find',
-                        message:'page not find'
+                        message:'page not find',
+                        host: static_server_url
                     }
                   })
             }

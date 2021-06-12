@@ -57,12 +57,12 @@
   },
   "scripts": {
     "debug": "cross-env NODE_ENV=local nodemon ./bin/www.ts --watch",
-    "dev:server": "cross-env NODE_ENV=local nodemon ./bin/www.js --watch",
+    "dev:server": "cross-env NODE_ENV=local nodemon ./bin/www.ts --watch",
     "prd:server": "cross-env NODE_ENV=prd pm2 start./bin/www.js--node-args '--max_old_space_size=100'",
     "build:prd": "cross-env NODE_ENV=prd&& rimraf dist&& tsc",
     "build:local": "cross-env NODE_ENV=local&& rimraf dist&& tsc",
     "build:dev": "cross-env NODE_ENV=dev&& tsc",
-    "watch:ts": "rimraf dist&& tsc--w"
+    "watch:ts": "rimraf dist&& tsc --w"
   },
   "author": "ymin",
   "license": "MIT",

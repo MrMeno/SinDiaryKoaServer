@@ -1,13 +1,30 @@
 import { Context ,Next} from 'koa';
 import { GET ,POST, PUT ,DELETE} from '../serveModel/Interfaces/network';
-import { connection } from '../utils/map/db_connection';
+import { createConection } from '../serveModel/Database/db_connection';
 import toolClass from '../utils/tool/index';
+import { config } from 'bluebird';
+import {static_server_url } from '../config/config.base';
+
+const connection:any = createConection();
 export default class indexRouter {
+
+  @GET('/', true)
+  async root(ctx:Context){
+    await ctx.render('index',{
+      title:'Hello Koa 2!',
+      data:{
+        host: static_server_url
+      }
+    })
+  }
 
   @GET('/login', true)
   async login(ctx:Context){
     await ctx.render('index',{
-      title:'Hello Koa 2!'
+      title:'Hello Koa 2!',
+      data:{
+        host: static_server_url
+      }
     })
   }
   @GET('/role',true)

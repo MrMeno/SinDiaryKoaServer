@@ -26,37 +26,15 @@ type httpOptions = {
     api?: string
 }
 type ConfigCollection = {
-    mysqlConfigDev: dbInfo,
-    gocrondb_dev_shkf: dbInfo,
-    gocrondb_dev_shzb: dbInfo,
-    shkf: serverOption,
-    shzb: serverOption,
-    rjck_prd: serverOption,
-    HostListInfo: Array<serverOption>,
-    dbListInfo: Array<dbInfo>,
     config: dbInfo,
     hostConfig: serverOption,
+    mysqlConfigDev: dbInfo,
     remote_server_url: string;
     setConfig: (name?: string) => void,
-    setHostConfig: (stationName?: string) => void,
-    getPublicAuth: (url: string, timestap: number) => string,
-    getAllHost: () => void,
-    getAllDb: () => void
 }
 const env: string | undefined = process.env.NODE_ENV;
-const SSOUrl = 'http://wcms.wind.com.cn:9000/ssoweb/sso_login.aspx';
-var SSOReturnUrl = '';
-if (env === 'prd') {
-    SSOReturnUrl = 'http://10.100.3.138:3001/task/task/set/auth';
-}
-if (env === 'dev') {
-    SSOReturnUrl = 'http://10.100.1.223:3001/task/task/set/auth';
-}
-if (env === 'local') {
-    SSOReturnUrl = 'http://10.100.2.25:3005/task/set/auth';
-}
 const redis_url: string = '127.0.0.1:6379';
-const appid: string = 'DepotTask';
+const static_server_url: string = 'http://localhost:3005';
 const md5_key: string = "abcd1234";
 const md5_secrect: string = "ABcd_1234";
 const rootPath:string= path.resolve(__dirname,'../');
@@ -64,12 +42,11 @@ export {
     dbInfo,
     serverOption,
     httpOptions,
-    SSOUrl,
-    SSOReturnUrl,
-    appid,
+    env,
     md5_key,
     md5_secrect,
     redis_url,
     ConfigCollection,
-    rootPath
+    rootPath,
+    static_server_url
 }
