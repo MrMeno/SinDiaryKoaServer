@@ -11,7 +11,7 @@ import { OPTIONS } from 'serveModel/Interfaces/network'
     `gocrondb_dev_${name}`
     */
     constructor(name?: string) {
-        fs.readFile(path.join(__dirname,'../db.conf'),(err,data)=>{
+        fs.readFile(path.join(__dirname,'../my.conf'),(err,data)=>{
             if(err){
                 throw(new SyntaxError(err.message));
             }
@@ -35,7 +35,7 @@ import { OPTIONS } from 'serveModel/Interfaces/network'
     }
     config: dbInfo;
     hostConfig: serverOption;
-    remote_server_url = 'http://127.0.0.1:3005';
+    remote_server_url = 'http://127.0.0.1:3035';
     setConfig = (name?: string): void => {
         this.config = name ? this[name] : this.db
     }
