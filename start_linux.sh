@@ -1,7 +1,7 @@
 #!/bin/bash
 source /home/SinDiaryKoaServer
-KOA_HOME=/home/SinDiaryKoaServer
-SERVER_HOME=/usr/src
+KOA_HOME=/home/node/SinDiaryKoaServer
+SERVER_HOME=/home/node/SinDiaryKoaServer/dist
 export KOA_HOME
 echo "开始编译typescript文件"
 file_remove=`rm -rf ./serveModel`
@@ -23,19 +23,11 @@ then
         sleep 1
         if ($file_move -eq 0);
         then
-            echo "重构完成"
-            echo "koa-server构建完成启动"
-            file_move4=`cp -a ${KOA_HOME}/dist ${SERVER_HOME}`
-            sleep 1
-            if ($file_move4 -eq 0);
+          SERVER_INIT=`cnpm i`
+            if ($SERVER_INIT -eq 0);
             then
-                TO_SERVER=`cd ${SERVER_HOME}`
-                sleep 1
-                SERVER_INIT=`cnpm i`
-                if ($SERVER_INIT -eq 0);
-                then
-                    START_SERVER=`npm run prd:server`
-                fi
+                START_SERVER=`pm2 start ./bin/www.js`
+                echo "koa-server success start"
             fi
         fi
     fi
