@@ -3,7 +3,7 @@ import path from 'path';
 
 type dbInfo = {
     readonly user: string
-    readonly password: string
+    password: string
     readonly database: string
     readonly host: string
     readonly port: number
@@ -28,13 +28,13 @@ type httpOptions = {
 type ConfigCollection = {
     config: dbInfo,
     hostConfig: serverOption,
-    mysqlConfigDev: dbInfo,
+    db: dbInfo,
     remote_server_url: string;
     setConfig: (name?: string) => void,
 }
 const env: string | undefined = process.env.NODE_ENV;
 const redis_url: string = '127.0.0.1:6379';
-const static_server_url: string = 'http://localhost:3005';
+const static_server_url: string = 'http://localhost:3000';
 const md5_key: string = "abcd1234";
 const md5_secrect: string = "ABcd_1234";
 const rootPath:string= path.resolve(__dirname,'../');

@@ -2,14 +2,16 @@ import { Context ,Next} from 'koa';
 import { GET ,POST, PUT ,DELETE} from '../serveModel/Interfaces/network';
 import { createConection } from '../serveModel/Database/db_connection';
 import toolClass from '../utils/tool/index';
-import { config } from 'bluebird';
 import {static_server_url } from '../config/config.base';
+import { Sequelize } from 'sequelize/types';
+import dbAction from '../serveModel/Controllers/db_action';
 
-const connection:any = createConection();
+const connection:Sequelize = createConection();
 export default class indexRouter {
 
   @GET('/', true)
   async root(ctx:Context){
+
     await ctx.render('index',{
       title:'Hello Koa 2!',
       data:{
@@ -20,6 +22,11 @@ export default class indexRouter {
 
   @GET('/login', true)
   async login(ctx:Context){
+    const dbHandler = new dbAction();
+    let result:any = [];
+    await dbHandler.getAllUser(ctx.body).then(res=>{
+      result = res;
+    });
     await ctx.render('index',{
       title:'Hello Koa 2!',
       data:{

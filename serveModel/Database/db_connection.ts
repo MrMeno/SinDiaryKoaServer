@@ -1,7 +1,6 @@
 import { Sequelize } from 'sequelize-typescript'
-import { gc_host } from './gocrondb/gc_host'
-import { gc_task } from './gocrondb/gc_task'
 import { dbInfo,ConfigCollection } from '../../config/config.base';
+import Tables from './main/index';
 import getConfig from '../../config';
 
 const baseConfig:ConfigCollection = getConfig();
@@ -15,7 +14,7 @@ const createConection = (db_config: dbInfo = baseConfig.config):Sequelize => {
             host: db_config.host,
             port: db_config.port,
             models: [
-               
+               ...Tables
             ],
             pool: {
                 max: 100,

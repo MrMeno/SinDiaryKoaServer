@@ -1,20 +1,32 @@
-import type { Dialect } from 'sequelize'
+import { ABSTRACT, Dialect } from 'sequelize'
 import path from 'path'
 import * as crypto from 'crypto'
+import fs from 'fs'
 import { dbInfo, serverOption, md5_key, md5_secrect, ConfigCollection } from './config.base'
-class DevConfig implements ConfigCollection {
+import { OPTIONS } from 'serveModel/Interfaces/network'
+ class DevConfig implements ConfigCollection {
     /***
     *@paramname
     数据库简称
     `gocrondb_dev_${name}`
     */
     constructor(name?: string) {
+        fs.readFile(path.join(__dirname,'../db.conf'),(err,data)=>{
+            if(err){
+                throw(new SyntaxError(err.message));
+            }
+           
+            if(this[name]){
+                this[name].password = data.toString();
+            }
+            this.db.password = data.toString();
+        })
         this.setConfig(name)//设置数据库配置
     }
-    mysqlConfigDev: dbInfo = {
-        user: "root",
-        password: "depot",
-        database: "merio_db",
+    db: dbInfo = {
+        user: "merio",
+        password: "",
+        database: "dev",
         host: "8.142.178.27",//软件仓库开发环境
         port: 3306,
         dialect: 'mysql',
@@ -23,9 +35,9 @@ class DevConfig implements ConfigCollection {
     }
     config: dbInfo;
     hostConfig: serverOption;
-    remote_server_url = 'http://8.142.178.27:3005';
+    remote_server_url = 'http://127.0.0.1:3005';
     setConfig = (name?: string): void => {
-        this.config = name ? this[name] : this.mysqlConfigDev
+        this.config = name ? this[name] : this.db
     }
 
 

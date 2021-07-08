@@ -12,7 +12,7 @@ class HttpRequestMethod {
         //if(ctx.headers['auth-token'])
         //{token=ctx.headers['auth-token']};
         //option['headers']={...option['headers'],'auth-token':token};
-        let config = new Config('', '');
+        let config = new Config('db');
         let param = {};
         if (option['api']) {
             let time = parseInt((new Date().getTime() / 1000).toString());
@@ -58,7 +58,7 @@ class HttpRequestMethod {
         //if(ctx.headers['auth-token'])
         //{token=ctx.headers['auth-token']};
         //option['headers']={...option['headers'],'auth-token':token};
-        let config = new Config('', '');
+        let config = new Config('db');
         let param = {};
         if (option['api']) {
             let time = parseInt((new Date().getTime() / 1000).toString());
@@ -103,7 +103,7 @@ class HttpRequestMethod {
         //if(ctx.headers['auth-token'])
         //{token=ctx.headers['auth-token']};
         //option['headers']={...option['headers'],'auth-token':token};
-        let config = new Config('', '');
+        let config = new Config('db');
         let param = {};
         if (option['api']) {
             let time = parseInt((new Date().getTime() / 1000).toString());
